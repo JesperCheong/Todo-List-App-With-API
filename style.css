@@ -1,4 +1,58 @@
-html {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+/* html, body {
   height: 100%;
   width: 100%;
+} */
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  padding: 1rem 0;
+  background-color: #A7727D;
+  color: white;
 }
+
+.center-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.table-title {
+  align-self: start;
+}
+.sort-btn {
+  align-self: end;
+  border: 1px black solid;
+}
+
+table {
+  width: 90%;
+}
+th,td {
+  padding: 1rem 1rem;
+}
+table, th, td {
+  border-collapse: collapse;
+  border: 1px dotted black;
+}
+tbody tr td{
+  text-align: center;
+}
+tbody tr td:nth-child(2) {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+thead {background-color: #EDDBC7}
+tbody tr:nth-child(odd) {background-color: #F9F5E7;}
+tbody tr:nth-child(even) {background-color: #F8EAD8;}
