@@ -3,8 +3,14 @@ async function fetchTodo() {
   try {
     const response = await fetch("https://jsonplaceholder.typicode.com/todos");
     const data = await response.json();
-    todoList = data;
-
+    //organise data for ease of use later
+    organizedData = data.map(datum => ({
+      "id": datum.id,
+      "title": datum.title,
+      "userId": datum.userId,
+      "completed": datum.completed,
+    }));
+    todoList = organizedData; 
   } catch (error) {
     console.warn(error);
     alert(error);
@@ -12,26 +18,19 @@ async function fetchTodo() {
 }
 
 
-/* async function render() {
+async function render() {
   await fetchTodo();
   const tableBody = document.getElementsByTagName("tbody");
   todoList.forEach((todo) => {
     const row = document.createElement("tr");
-    const cell1 = document.createElement("td");
-    const cell2 = document.createElement("td");
-    const cell3 = document.createElement("td");
-    const cell4 = document.createElement("td");
-    cell1.textContent = todo.id;
-    cell2.textContent = todo.title;
-    cell3.textContent = todo.userId;
-    cell4.textContent = todo.completed;
-    row.appendChild(cell1);
-    row.appendChild(cell2);
-    row.appendChild(cell3);
-    row.appendChild(cell4);
+    for (const item in todo) {
+      const cell = document.createElement("td");
+      cell.textContent = todo[item];
+      row.appendChild(cell);
+    }
     tableBody[0].appendChild(row);
   });
-} */
+}
 
 let todoList;
 render()
