@@ -27,6 +27,7 @@ async function fetchTodo() {
 async function render() {
   await fetchTodo();
   renderUserFilter();
+  renderStatusFilter();
   renderList();
 }
 
@@ -53,16 +54,20 @@ function renderUserFilter() {
   })
 }
 function renderStatusFilter() {
-  const filterByStatus = document.getElementsByClassName("filter-by-status");
-  const select = document.createElement("select");
   const uniqueStatus = [...new Set(todoList.map(item => item.completed))];
+  const filterByStatus = document.getElementById("filter-by-status");
   uniqueStatus.forEach((status) => {
     const option = document.createElement("option");
-    option.value = status;
-    option.textContent = status;
-    select.appendChild(option);
+    if (status === "✔") {
+      option.value = "Completed";
+      option.textContent = "Completed";
+    } else if (status === "") {
+      option.value = "Incomplete";
+      option.textContent = "Incomplete";
+    }
+    
+    filterByStatus.appendChild(option);
   })
-  filterByStatus[0].appendChild(select);
 }
 
 

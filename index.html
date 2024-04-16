@@ -21,7 +21,7 @@
     </div>
   </nav>
 
-  <div class="row pt-5 text-center" >
+  <div class="row m-0 pt-5 text-center" >
     <div class="col-md-6 pb-3 pb-md-5">
       <span>Filter by User ID: </span>
       <select id="filter-by-user" class="form-select d-inline w-auto">
@@ -32,15 +32,14 @@
 
     <div class="col-md-6 pb-3 pb-md-5">
       <span>Filter by Status:</span>
-      <select class="form-select d-inline w-auto">
+      <select id="filter-by-status" class="form-select d-inline w-auto">
         <option>All</option>
-        <option>Completed</option>
-        <option>Incomplete</option>
+        
       </select>
     </div>
   </div>
 
-  <div class="container-sm border rounded-3 border-black">
+  <div class="container-sm">
     <table class="table table-striped caption-top">
       <caption>Todo List</caption>
       <thead class="table-warning text-nowrap">
