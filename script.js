@@ -4,11 +4,6 @@ async function fetchTodo() {
     const data = await response.json();
     //organise data for ease of use later
     organizedData = data.map(datum => {
-      /* if (datum.completed === true) {
-        datum.completed = "✔";
-      } else if (datum.completed === false) {
-        datum.completed = "";
-      } */
       return {
         "id": String(datum.id),
         "title": String(datum.title),
@@ -17,6 +12,9 @@ async function fetchTodo() {
       };
     });
     todoList = organizedData;
+    //remove loading spinner
+    const loading = document.getElementById("loading-spinner");
+    loading.remove();
   } catch (error) {
     console.warn(error);
     alert(error);
@@ -39,7 +37,6 @@ function renderList() {
   // filter list
   const filterStatusInput = statusFilter.value;
   const filterUserInput = userFilter.value;
-
   const filteredList = todoList.filter(todo => {
     return (filterStatusInput === "All" || todo.completed === filterStatusInput) &&
       (filterUserInput === "All" || todo.userId === filterUserInput);
@@ -89,7 +86,10 @@ function renderStatusFilter() {
       option.textContent = "Completed"; // for display
     } else if (status === "false") {
       option.value = "false";
-      option.textContent = "Incomplete"; /// for display
+      option.textContent = "Incomplete"; // for display
+    } else {
+      option.value = "others";
+      option.textContent = "others"
     }
     filterByStatus.appendChild(option);
   })
